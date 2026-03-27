@@ -10,8 +10,6 @@ function createGrids(row, coloumn) {
     const itemWidth = 100 / coloumn
     gridItem.style.width = `${itemWidth}%`
     gridItem.style.border = "1px solid rgba(0, 0, 0, 0.5)"
-    gridItem.style.boxSizing = "border-box"
-    gridItem.style.textAlign = "center"
 
     container.appendChild(gridItem)
   }
