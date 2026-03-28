@@ -10,13 +10,26 @@
   <body>
     <div class="container">
       <div class="controls">
-        <div class="color-picker"></div>
-        <div class="rgb-toggler"></div>
-        <div class="slider"></div>
+        <div class="color-picker-wrapper">
+          <input
+            type="color"
+            name="color-picker"
+            id="color-picker"
+            value="#000000"
+          />
+          <p class="color-displayer" id="color-displayer">#000000</p>
+        </div>
+        <div class="rgb-toggler-wrapper">
+          <label for="" class="rgb-toggler-label">
+            <input type="checkbox" id="rgb-toggler-input" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="size-slider" id="size-slider"></div>
       </div>
       <div id="grid-container" class="grid-container"></div>
     </div>
 
-    <script src="script/script.js"></script>
+    <!-- <script src="script/script.js"></script> -->
   </body>
 </html>
