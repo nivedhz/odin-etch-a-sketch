@@ -9,7 +9,6 @@ function createGrids(row, coloumn) {
     const gridItem = document.createElement("div");
     const itemWidth = 100 / coloumn;
     gridItem.style.width = `${itemWidth}%`;
-    gridItem.style.border = "1px solid rgba(0, 0, 0, 0.5)";
 
     container.appendChild(gridItem);
   }
