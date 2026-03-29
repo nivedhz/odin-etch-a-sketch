@@ -6,7 +6,6 @@ const sizeSlider = document.getElementById("size-slider");
 const resetButton = document.getElementById("reset-button");
 let sizeDisplayer = document.getElementById("size-displayer");
 let colorDisplayer = document.getElementById("color-displayer");
-const randomColors = ["black", "red", "aqua", "azure", "blue", "pink", "peru"];
 let selectedColor = "black";
 const DEFAULT_SIZE = 14;
 let size = DEFAULT_SIZE;
@@ -58,16 +57,16 @@ colorPicker.addEventListener("input", (event) => {
 sizeSlider.addEventListener("input", (event) => {
   size = event.target.value;
   sizeDisplayer.textContent = `${size}x${size}`;
-  container.innerHTML = "";
+  container.replaceChildren();
   createGrid(size);
 });
 clearButton.addEventListener("click", () => {
-  container.innerHTML = "";
+  container.replaceChildren();
   sizeDisplayer.textContent = `${size}x${size}`;
   createGrid(size);
 });
 resetButton.addEventListener("click", () => {
-  container.innerHTML = "";
+  container.replaceChildren();
   colorPicker.value = "#000000";
   size = DEFAULT_SIZE;
   rgbMode = false;
