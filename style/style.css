@@ -9,10 +9,6 @@ body {
   justify-content: center;
   background-color: #141313;
 }
-
-.flex {
-  flex: 1 1 auto;
-}
 .container {
   background-color: #f9f5fa;
   margin-top: 40px;
@@ -85,68 +81,6 @@ body {
   font-weight: 800;
 }
 
-.rgb-toggler-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.rgb-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 100%;
-  font-weight: bold;
-}
-.rgb-toggler-label {
-  position: relative;
-  display: inline-block;
-  max-width: 50px;
-  width: 100%;
-  min-height: 24px;
-}
-
-.rgb-toggler-label input {
-  position: relative;
-  opacity: 0;
-  min-height: 24px;
-  max-width: 50px;
-  width: 100%;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.toggler {
-  position: absolute;
-  inset: 0;
-  background-color: #ccc;
-  border-radius: 34px;
-  transition: 0.3s;
-  max-width: 50px;
-  width: 100%;
-  min-height: 28px;
-}
-
-.toggler::before {
-  content: "";
-  position: absolute;
-  min-height: 20px;
-  max-width: 20px;
-  width: 100%;
-  left: 4px;
-  top: 4px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-input:checked + .toggler {
-  background-color: #4caf50;
-}
-
-input:checked + .toggler::before {
-  transform: translateX(22px);
-}
-
 .size-slider-wrapper {
   display: flex;
   flex-direction: column;
@@ -156,17 +90,30 @@ input:checked + .toggler::before {
 }
 .slider {
   width: 80%;
+  cursor: pointer;
 }
 
 .buttons-wrapper {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .buttons-wrapper button {
-  width: 60px;
-  height: 40px;
-  border-radius: 8px;
-  outline: none;
   cursor: pointer;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease-in;
+}
+.buttons-wrapper button:hover {
+  color: #fff;
+  background-color: #000;
+  transform: scale(1.09);
+}
+.active {
+  background-color: #000;
 }
