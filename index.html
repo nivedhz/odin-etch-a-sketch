@@ -19,17 +19,19 @@
           />
           <p class="color-displayer" id="color-displayer">#000000</p>
         </div>
-        <div class="rgb-toggler-wrapper">
-          <p class="rgb-info">RGB</p>
-          <label for="" class="rgb-toggler-label">
-            <input type="checkbox" id="rgb-toggler-input" />
-            <span class="toggler"></span>
-          </label>
+        <div class="buttons-wrapper">
+          <div class="rgb-toggler-wrapper">
+            <button id="rgb-button">Toggle RGB</button>
+          </div>
+          <div class="clear-wrapper">
+            <button id="clear-button">Clear</button>
+          </div>
+          <div class="reset-wrapper">
+            <button id="reset-button">Reset</button>
+          </div>
         </div>
         <div class="size-slider-wrapper" id="size-slider-wrapper">
-          <p class="size-displayer">
-            <span id="value">14</span>x<span id="value">14</span>
-          </p>
+          <p class="size-displayer">14x14</p>
           <label for="size-slider"></label>
           <input
             type="range"
@@ -39,14 +41,6 @@
             max="24"
             class="slider"
           />
-        </div>
-        <div class="buttons-wrapper">
-          <div class="clear-wrapper">
-            <button>Clear</button>
-          </div>
-          <div class="reset-wrapper">
-            <button>Reset</button>
-          </div>
         </div>
       </div>
       <div id="grid-container" class="grid-container"></div>
