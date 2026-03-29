@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: 1px solid red;
 }
 
 body {
@@ -11,13 +10,17 @@ body {
   background-color: #141313;
 }
 
+.flex {
+  flex: 1 1 auto;
+}
 .container {
   background-color: #f9f5fa;
   margin-top: 40px;
   display: flex;
   align-items: center;
+  min-width: 10vw;
   width: 60vw;
-  height: 40vw;
+  min-height: 70vh;
   border: 3px solid black;
   border-radius: 10px;
 }
@@ -27,8 +30,9 @@ body {
   flex-direction: column;
   width: 20%;
   height: 100%;
-  gap: 10px;
   border-right: 3px solid black;
+  justify-content: center;
+  gap: 30px;
 }
 
 .grid-container {
@@ -46,10 +50,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 #color-picker {
-  height: 50px;
-  width: 50px;
+  max-width: 100px;
+  width: 100%;
+  min-height: 100px;
   border-radius: 50%;
   border: 0;
   outline: 0;
@@ -64,15 +70,16 @@ body {
   border: none;
 }
 #color-picker::-moz-color-swatch {
-  border-radius: 50;
+  border-radius: 50%;
   border: none;
 }
 .color-displayer {
   display: flex;
   justify-content: center;
   text-align: center;
-  width: 80px;
-  height: 20px;
+  max-width: 80px;
+  width: 100%;
+  min-height: 20px;
   outline: 1px solid black;
   border-radius: 3px;
   font-weight: 800;
@@ -81,38 +88,50 @@ body {
 .rgb-toggler-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+}
+.rgb-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  font-weight: bold;
 }
 .rgb-toggler-label {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 28px;
+  max-width: 50px;
+  width: 100%;
+  min-height: 24px;
 }
 
 .rgb-toggler-label input {
   position: relative;
   opacity: 0;
-  height: 28px;
-  width: 50px;
+  min-height: 24px;
+  max-width: 50px;
+  width: 100%;
   z-index: 1;
   cursor: pointer;
 }
 
-.slider {
+.toggler {
   position: absolute;
   inset: 0;
   background-color: #ccc;
   border-radius: 34px;
   transition: 0.3s;
-  width: 50px;
-  height: 28px;
+  max-width: 50px;
+  width: 100%;
+  min-height: 28px;
 }
 
-.slider::before {
+.toggler::before {
   content: "";
   position: absolute;
-  height: 20px;
-  width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  width: 100%;
   left: 4px;
   top: 4px;
   background-color: white;
@@ -120,10 +139,34 @@ body {
   transition: 0.3s;
 }
 
-input:checked + .slider {
+input:checked + .toggler {
   background-color: #4caf50;
 }
 
-input:checked + .slider::before {
+input:checked + .toggler::before {
   transform: translateX(22px);
+}
+
+.size-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.slider {
+  width: 80%;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.buttons-wrapper button {
+  width: 60px;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
 }
