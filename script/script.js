@@ -4,10 +4,11 @@ const colorPicker = document.getElementById("color-picker");
 const rgbButton = document.getElementById("rgb-button");
 const sizeSlider = document.getElementById("size-slider");
 const resetButton = document.getElementById("reset-button");
-let sizeDisplayer = document.getElementById("size-displayer");
-let colorDisplayer = document.getElementById("color-displayer");
-let selectedColor = "black";
+const sizeDisplayer = document.getElementById("size-displayer");
+const colorDisplayer = document.getElementById("color-displayer");
 const DEFAULT_SIZE = 14;
+const DEFAULT_COLOR = "#000000";
+let selectedColor = DEFAULT_COLOR;
 let size = DEFAULT_SIZE;
 let isDragging = false;
 let rgbMode = false;
@@ -30,7 +31,7 @@ function generateRandomRgb() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
-function rgbModeFunction() {
+function toggleRgbMode() {
   rgbMode = !rgbMode;
   if (rgbMode) {
     rgbButton.style.color = "white";
@@ -46,11 +47,14 @@ function replaceContainer() {
   createGrid(size);
 }
 function resetContainer() {
-  colorPicker.value = "#000000";
+  colorPicker.value = DEFAULT_COLOR;
+  selectedColor = DEFAULT_COLOR;
   size = DEFAULT_SIZE;
   rgbMode = false;
+  rgbButton.style.color = "";
+  rgbButton.style.backgroundColor = "";
   sizeSlider.value = size;
-  colorDisplayer.textContent = "#000000";
+  colorDisplayer.textContent = DEFAULT_COLOR;
 }
 container.addEventListener("mousemove", (event) => {
   const target = event.target;
@@ -61,7 +65,7 @@ container.addEventListener("mousemove", (event) => {
 
   target.style.backgroundColor = rgbMode ? generateRandomRgb() : selectedColor;
 });
-rgbButton.addEventListener("click", rgbModeFunction);
+rgbButton.addEventListener("click", toggleRgbMode);
 colorPicker.addEventListener("input", (event) => {
   selectedColor = event.target.value;
   colorDisplayer.textContent = selectedColor;
