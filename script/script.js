@@ -49,6 +49,18 @@ function rgbModeFunction() {
     rgbButton.style.backgroundColor = "";
   }
 }
+function replaceContainer() {
+  container.replaceChildren();
+  sizeDisplayer.textContent = `${size}x${size}`;
+  createGrid(size);
+}
+function resetContainer() {
+  colorPicker.value = "#000000";
+  size = DEFAULT_SIZE;
+  rgbMode = false;
+  sizeSlider.value = size;
+  colorDisplayer.textContent = "#000000";
+}
 rgbButton.addEventListener("click", rgbModeFunction);
 colorPicker.addEventListener("input", (event) => {
   selectedColor = event.target.value;
@@ -56,32 +68,22 @@ colorPicker.addEventListener("input", (event) => {
 });
 sizeSlider.addEventListener("input", (event) => {
   size = event.target.value;
-  sizeDisplayer.textContent = `${size}x${size}`;
-  container.replaceChildren();
-  createGrid(size);
+  replaceContainer();
 });
 clearButton.addEventListener("click", () => {
-  container.replaceChildren();
-  sizeDisplayer.textContent = `${size}x${size}`;
-  createGrid(size);
+  replaceContainer();
 });
 resetButton.addEventListener("click", () => {
-  container.replaceChildren();
-  colorPicker.value = "#000000";
-  size = DEFAULT_SIZE;
-  rgbMode = false;
-  sizeSlider.value = size;
-  sizeDisplayer.textContent = `${size}x${size}`;
-  colorDisplayer.textContent = "#000000";
-  createGrid(size);
+  resetContainer();
+  replaceContainer();
 });
-window.addEventListener("mousedown", () => {
+container.addEventListener("mousedown", () => {
   isDragging = true;
 });
-window.addEventListener("mouseup", () => {
+container.addEventListener("mouseup", () => {
   if (isDragging) {
     isDragging = false;
   }
 });
 
-createGrid(14);
+createGrid(DEFAULT_SIZE);
