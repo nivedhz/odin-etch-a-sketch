@@ -19,18 +19,23 @@ function createGrid(value) {
     gridItem.style.width = `${itemWidth}%`;
     gridItem.style.border = "1px solid rgba(0, 0, 0, 0.3)";
 
-    gridItem.addEventListener("mousemove", () => {
-      if (isDragging) {
-        if (rgbMode) {
-          gridItem.style.backgroundColor = generateRandomRgb();
-        } else {
-          gridItem.style.backgroundColor = selectedColor;
-        }
-      }
-    });
     container.appendChild(gridItem);
   }
 }
+container.addEventListener("mousemove", (event) => {
+  if (event.target != container) {
+    if (event.target && event.target.nodeName === "DIV") {
+      if (!isDragging) return true;
+      else {
+        if (rgbMode) {
+          event.target.style.backgroundColor = generateRandomRgb();
+        } else {
+          event.target.style.backgroundColor = selectedColor;
+        }
+      }
+    }
+  }
+});
 
 function generateRandomRgb() {
   const red = Math.floor(Math.random() * 256);
@@ -61,6 +66,15 @@ function resetContainer() {
   sizeSlider.value = size;
   colorDisplayer.textContent = "#000000";
 }
+container.addEventListener("mousemove", (event) => {
+  const target = event.target;
+
+  if (target === container) return;
+  if (target.nodeName !== "DIV") return;
+  if (!isDragging) return;
+
+  target.style.backgroundColor = rgbMode ? generateRandomRgb() : selectedColor;
+});
 rgbButton.addEventListener("click", rgbModeFunction);
 colorPicker.addEventListener("input", (event) => {
   selectedColor = event.target.value;
