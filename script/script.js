@@ -22,20 +22,6 @@ function createGrid(value) {
     container.appendChild(gridItem);
   }
 }
-container.addEventListener("mousemove", (event) => {
-  if (event.target != container) {
-    if (event.target && event.target.nodeName === "DIV") {
-      if (!isDragging) return true;
-      else {
-        if (rgbMode) {
-          event.target.style.backgroundColor = generateRandomRgb();
-        } else {
-          event.target.style.backgroundColor = selectedColor;
-        }
-      }
-    }
-  }
-});
 
 function generateRandomRgb() {
   const red = Math.floor(Math.random() * 256);
